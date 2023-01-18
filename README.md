@@ -5,7 +5,11 @@ Everytime you answer wrong, it will substract the time.
 You can start the game when you're done. 
 You can save your initials when you're done.
 
-##Deployment 
+## Installation 
+N/A
+## Deployment Link
 
-##License 
-MIT license 
+https://tweetwee1810.github.io/Code-Quiz-API/
+
+## License 
+ Distributed under the MIT License. 

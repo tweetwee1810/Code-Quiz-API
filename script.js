@@ -12,6 +12,7 @@ var startButton = document.getElementById("start-button")
 var nextButton = document.getElementById("next-button")
 
 var scoreEl = document.querySelector("#scoreid");
+scoreEl.innerHTML = secondsLeft;
 var playAgain = document.createElement("button");
 //create the the eventlistener for click
 startButton.addEventListener('click', startGame)
@@ -87,6 +88,10 @@ function init() {
 }
 //create a function to start the game
 function startGame () {
+    setInterval( function () {
+        secondsLeft --
+        scoreEl.innerHTML = secondsLeft
+    }, 1000)
 //check if the function works
 console.log("start")
 //hide the start button
@@ -132,6 +137,15 @@ function resetState() {
 function selectAnswer(e){
     var selectedButton = e.target
     var correct = selectedButton.dataset.correct
+
+    if (correct) {
+        score ++;
+        scoreEl.textContent = score;
+    } 
+    else {
+        secondsLeft -= 10;
+    }
+
     setStatusClass(document.body, correct)
     Array.from(answerButtonElement.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
@@ -144,13 +158,10 @@ function setStatusClass(element, correct) {
     if (correct){
         element.classList.add("correct")
         console.log("correct answer")
-        score ++;
-        scoreEl.textContent = score;
-
     }
     else{
         element.classList.add("wrong")
-        count -= 10;
+       
     }
 }
 //create function for clear status
@@ -164,10 +175,14 @@ function clearStatusClass(element) {
 // };
 // setInterval(makeAlert, 50000);
 
-var downloadTimer = setInterval(function(){
-    if(secondsleft <= 0){
-      clearInterval(downloadTimer);
-    }
-    document.getElementById("progressBar").value = 10 - timeleft;
-    timeleft -= 1;
-  }, 1000);
+// var downloadTimer = setInterval(function(){
+//     if(secondsleft <= 0){
+//       clearInterval(downloadTimer);
+//     }
+//     document.getElementById("progressBar").value = 10 - timeleft;
+//     timeleft -= 1;
+//   }, 1000);
+// function timer (){
+   
+// }
+// timer()
